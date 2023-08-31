@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"github.com/Andrevyn7/webapi-with-go.git/database"
+	"github.com/Andrevyn7/webapi-with-go.git/database/migrations"
 	"github.com/Andrevyn7/webapi-with-go.git/models"
 	"github.com/gin-gonic/gin"
 )
@@ -34,6 +35,8 @@ func ShowBook(c *gin.Context) {
 
 func CreateBook(c *gin.Context) {
 	db := database.GetDatabase()
+
+	migrations.RunMigrations(db)
 
 	var book models.Book
 
